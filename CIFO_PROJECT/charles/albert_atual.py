@@ -173,20 +173,6 @@ class Population:
         return f"Population(size={len(self.individuals)}, individual_size={len(self.individuals[0])})"
 
 
-#if __name__ == '__main__':
-  #  a = Individual(cues = '0 0 8 1 0 0 4 0 6 0 2 0 0 0 0 0 0 3 0 0 3 0 0 0 0 0 0 9 0 0 0 3 5 0 0 0 0 0 0 0 0 2 0 7 0 4 0 2 8 6 0 0 9 0 0 0 6 0 4 8 0 0 1 0 8 0 2 0 0 6 0 9 5 1 4 0 0 0 8 0 0', size = 3, valid_set=[0,1,2,3,4,5,6,7,8,9])
-  #  print('given_index\n', a.given_index)
-  #  print('to fill index \n', a.to_fill_index)
-  #  ab,bc,cd = make_matrix(very_easy_)
-  #  print('matrix \n', ab)
-  #  print('representation\n',a.representation)
-  #  print('cues \n', a.cues)
-  #  print('fill values \n', a.fill_values)
 
-   # Pop = Population(size = 20, optim = 'min', cues = very_easy_)
-
-
-    #for i in a.representation:
-     #   print(entry_fitness(np.where(a == i), a.representation))
 
 
