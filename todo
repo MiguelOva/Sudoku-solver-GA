@@ -1,0 +1,166 @@
+Skip to end of metadata
+Created by Miguel Lopes, last modified by Mauro Ribeiro on Apr 21, 2023Go to start of metadata
+Mutual
+GENERAL OVERVIEW INDUCTION:
+
+Induction
+
+During the induction face we had weekly round ups where we've learnt about:
+
+Products (different product variants, production process, IQOS vs Combustible etc)
+Research & Development that goes into fabricating each product
+Sustainability behind the company
+Harm reduction and providing a smoke free future for our consumers
+PMI's Global vision for the future
+Learning & Development
+
+One important path is related to Learning & Development. This included sessions on how we could individually tailor the necessary/desired skills for our own career path.
+
+IT Capability Development with Sérgio, who provided an overview of IT Academy. Our one-stop-shop to reach our goals and succeed
+The Importance of Business Acumen by Katica to better understand our role, to leverage business resources and dive deeper into PMI's organization structure.
+The Power of Mentoring as an opportunity to share knowledge between people to improve the flow of information and ideas throughout PMI.
+O'Reilly platform presented by Jane exploring the functionalities and advantages of it.
+Introduction to CloudGuild with Sylvia to get to know how we should proceed to be successful in the AWS Cloud Practitioner Certificate.
+Career Development and Development Journeys for us to target our goals and pursue them.
+Weekly Round Ups with ExploreIT and Raylene
+
+Since the beginning we had lots of information to digest and get used to regarding Global Inductions, Learning & Development, Commercial Strategy, Marketing, Sustainability, Personal Branding, Psychological Safety and so on. All of these topics made our jobs easier and helped us throughout the integration process in a highly complex organization such as PMI.
+
+
+
+
+
+PAINPOINTS:
+
+Some pain points, which might be worth addressing.
+
+More dedicated sessions focused specifically on the DCE2 project would be beneficial.
+For example, having sessions similar to the 8-hour session we had in the Lisbon office, where we had an opportunity to learn everything relating to PMI products, combustible tobacco and RRP products, with a slot for Q&A for open discussion.
+Time is precious and business activities come first. However, having more such sessions would have enabled us to understand DCE2 more quickly and bring value to the team more efficiently.
+We also suggest shadowing or a similar program, although we acknowledge that this may be difficult to implement due to the scope of the international teams.
+For example, it can be challenging to identify who to contact for specific issues or topics, and even after identifying a contact, it can take a long time to get a response. Sometimes, it feels like a game of ping pong, where we are referred to another colleague or another possible "solution path" which can be frustrating and time consuming. But I do understand that this comes as a consequence of working on such a Large-Scale team.
+ 
+Although Confluence serves as the DCE2 Bible, it can be overwhelming and challenging to navigate.
+Therefore, we recommend constructing a small DCE2 manual for dummies, providing an overview of different teams, responsibilities, key open topics, priorities and standard operating practices.
+In order to start developing a small Helper for each of our specific job roles, we decide to create a dedicated page to store important links, useful information and other data. 
+This page aims at providing useful info not only for us, but for future colleagues who would join DCE2.0 for a "faster onboarding". Our goal is to continue to develop this page during the upcoming months.
+ 
+Overview & Helper - Associate Data Architect - DCE 2.0 Home - PMI DCE Confluence
+Overview & Helper - Associate Delivery Manager - DCE 2.0 Home - PMI DCE Confluence
+Overview & Helper - Associate QA Engineer - DCE 2.0 Home - PMI DCE Confluence
+ 
+The manual could include information on how to request access to different tools needed to operate between departments, which is currently a little confusing, with some requiring request through IMDL, other through Qbranch, sometime business reason is mandatory, sometimes little feedback is retrieved when request is denied.
+One issue encountered in the beginning was the lack of clarity in understanding the role of each team member, especially since most of the team is third party contractors.
+We suggest that team members' roles be more transparent and visible to helps us identify who to contact for specific issues related to specific areas, such as Elastic, HAC, SAP if relating to systems/platforms. There is a detailed list but only for Commerce & Content.
+Specific 
+What I have been doing. How have I been doing it. What knowledge did I extract from doing it.
+
+
+Miguel Ova - Data Architect
+-Provided support in a couple of User Stories.
+
+One was related to product ingestion improvements for the PIM environment through the use of excel macros to ensure data standardization & data requirements are met across the board.
+This was an excellent opportunity for me to not only re-ignite some of my knowledge of VBA but mostly for me to familiarize myself with the Global Catalog, Local Catalog, and all of the features that characterize Product Information.
+Familiarize myself with different environments, platforms, and teams.
+
+
+ Another relating to incorrect timestamps being exported into TD through MS integration.
+I learned a lot while providing support on this topic, mainly on how to work around systems access, understand how confluence works, how to search and filter documentation, team organization, and correct POC's.
+
+
+Overall better understanding of DCE2 Architecture 
+Grasping the overview of how data is processed and shared between different systems. 
+How to analyze and detail data impact for specific epics depending on the affected systems.
+Better understanding of the Data Models applied to each system
+Better understanding of the Data flow between systems, as well as the required object mapping
+
+
+Self-taught learning - Udemy, Fuse, Gartner, O'Reilly 
+AWS Cloud Practitioner
+Safe Agile Framework
+Scrum Framework
+
+
+
+
+Specific Pain point Example:
+
+A specific example of a pain point I encountered was when I tried to analyze the issue regarding the incorrect order time stamps in Treasure Data.
+
+Unfortunately, I didn't have access to Treasure Data, which made it difficult to analyze the scope of the issue and the number of affected cases.
+
+When it was recommended to check the logs exports to see if any issue might have been recorded. I tried to get access to Elastic Kibana and PagerDuty, which store logs from order exports, but it took a couple of days to gain access to Kibana, and PagerDuty access was denied.
+
+I also found that the logs on Kibana were not being stored properly, and there was no detailed SOP (Standard Operation Practices) available on how to navigate the system. Although there was a lot of information on Confluence, it wasn't helpful in this particular case. 
+
+After finding the logs, I could only find logs relating to a very small time period of Dec 2022. Something was wrong, either the logs were not being stored properly or I was doing something wrong within Kibana.
+
+Thankfully, with the help of Michele Fusi, who responded very quickly and with detailed info that the incorrect time stamps issue had been fixed in a previous CAPA. He also confirmed that Kibana Logs were not being stored properly and also confirmed that order exports logs were being parsed with the correct timestamp through the use of another system SAP (HANA).
+
+I am still a little unclear on why there are 3-4 systems to analyze logs. PagerDuty, HAC, Elastic Kibana and SAP.
+
+
+
+
+
+However, I also understand that this is slightly outside job scope, and this the direct result for increased security for the data within the company.
+
+Nevertheless, restricting access to only what is strictly necessary, increases complexity and time between communication for issues resolution.  
+
+Overall, I believe that addressing the pain points mentioned would improve our experience and enable us to be more productive in contributing to DCE2.
+
+
+
+Afonso Guimarães - QA Engineer
+Designed Test Plans/Test Cases and tested in Website vertical scope.
+Supported some testing and Test case design for CeApp User Stories in F2F vertical scope
+Knowledge transfer sessions with Mohammed on TAF.
+Supported and worked alongside Mousumi Ghosh on organizing Regression and Smoke test packs in Jira
+Oportunity to start realizing how JIRA filters could be super beneficial for structuring test packs.
+
+
+Better understanding of DCE2
+Working alongside the Website vertical has helped me understand it's structure, scope and processes in a more in-depth manner. 
+Helped me think outside the box and see what could be improved.
+
+
+Self-taught learning - Udemy, Fuse, Gartner, O'Reilly 
+AWS Cloud Practitioner
+Safe Agile Framework
+Scrum Framework
+
+
+Specific Pain point Example:
+
+A specific pain point for me would be, although the involvment of my line manager (Filipe) was very helpful and always showed availability to help, the lack of technical/processes onboarding. As time is super valuable and the team at PMI is more of a senior level, it was up to the Accenture testing team to give me an onboarding and KT sessions on all the proccesses involved in the QA scope. Like jumping into a moving train. In the beginning it can be quite hard to catch this train but with the help of Mousumi Ghosh, I was able to start getting involved as time passed by and all the learning was basically On The Job. 
+
+I acknowledge that it's hard to spend resources to onboard one person but I propose, together with the other ExploreIT members and with more senior members of the respective roles, to create a more structured onboarding plan for people to come, for mainly junior roles.
+
+
+
+Overall I see that with time I feel more helpful and responsabilities are growing. I'm excited to start having more catch ups with Phaneendhra (QA lead), helping the team on the Automation side of QA and overall produce more value for the company.
+
+
+
+Mauro Ribeiro - Associate Delivery Manager
+BAU Tickets
+Understanding of the different type of tickets that are addressed to BAU and the interaction that occurs for them to be solved or to be rejected (e.g.: tickets that are rejected because the resolution is a part of an already existing CAPA or because they are duplicate of already existing tickets)
+
+
+CAPA List
+Understanding of the recurrent incidents that occurred and the sequence of actions taken to mitigate them
+
+
+RCA Index
+Understanding of the incidents that came as P1 and the actions that were taken to solve them
+
+
+Other Activities
+
+Resource Allocation List
+Accenture Monthly Offer
+
+
+On-going self-learning:
+
+AWS Cloud Practitioner
