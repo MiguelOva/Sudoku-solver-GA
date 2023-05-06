@@ -1,94 +1,58 @@
+IT Project Management Process:
 
-3.1.1. Governance Meeting
-On a weekly basis, during the Governance meeting, IT Solution Managers review requests approved on Consumer Governance Board and assign them to leading IT Solution Manager.
-3.1.2. Integrated Planning Meeting
-During the Integrated Planning meeting, leading IT Solution Managers will prepare the list of priorities for the upcoming Sprint.
-As input for discussion, IT Solution Managers should to move all relevant ticket to the upcoming Sprint and identify all possible dependencies. 
-The output of this meeting will be the list of predefined priorities that will be shared and discussed with Capability Owners during Prioritization meeting 
-3.1.3. Integrated Prioritization Meeting
-One week before the Sprint starts, during the Integrated Prioritization Meeting, BPOs finalize the priority list for all capabilities for the upcoming sprint. 
-Input for discussion will be the list of proposed priorities prepared during the Integrated Planning meeting, that will be shared in advance with Capability Owners.
-The outcome of this meeting will be a Confluence page with the list of priorities based on Features for the upcoming Sprint and will be an input for Scrum Teams Planning meeting.
-3.1.4. Product Team Planning
-Product teams are self-organized in terms of Sprint ceremonies and practices.
-Based on the outcome of the Prioritization meeting, each Product Team organizes a Planning meeting in order to share and explain agreed Integrated Sprint Goal and to create a Sprint Backlog, as per defined priorities: having Product Backlog ordered allow the Team to pick-up items of the highest priority. Given that Teams use Jira, Product Backlog Items (PBIs) shall be ordered in there directly.
-Product Backlog Items (PBI) have to meet Definition of Ready (DoR) and Acceptance Criteria (AC) have to be defined for each PBI. AC may change after development started: the reasons of the change shall be properly documented and stored in PBI with confirmation of Technical Product Owner.
-Stories from Sprint Backlog are decomposed by the team into Sub-Task to capture adequate level of details of activities. 
-Mandatory for this meeting are TPO, Scum Master, Development Team. Depending on the Sprint scope, Chapters representatives may also join the Planning.
-3.1.5. Development and Testing 
-Once Acceptance Criteria are provided and DoR are checked, Development team can start working on stories in the backlog as they are prioritized (items of highest priority first). 
-When the new code is ready, the story has to be reassigned in order to perform a code review: this can't be done by the same person who completed the development of the story. After this, it can be assigned to a functional member of the scrum team to perform component test.
-It's critical to ensure that all necessary tests are executed to verify that previously introduced functionalities are not broken by a new change.
-3.1.5.1. Product Level Testing
-Testing activities are planned within development scope, not in a separate testing phase; as code is changed and stories developed, Scrum Teams perform series of tests on Product level:
-• Static Code Analysis: 
-• the analysis of computer software, performed without actually executed the program; 
-• executed automatically by CI/CD pipeline during code integration (pull request); 
-• integration change should not be allowed when criteria is not met (no critical and major issue).
-• Unit Tests: 
-• executed to verify that individual units of source code are fit for use;
-• change cannot be integrated when not all tests pass.
-• Component Tests: 
-• executed in order to verify that individual component separately meets requirements; 
-• change cannot be deployed to QA when not all tests pass;
-• it's an acceptance criteria for Stories.
-At the end of Development phase, code is released in QA Environment, where Integrated Test will be executed (recommended code freeze date is Thursday of the week before Sprint closure).
-3.1.5.2. Integrated Level Testing
-During the third week of the Sprint, code has been deployed to QA, where Integrated Testing can be executed, before changes are promoted to higher environment:
-• System Integration Testing (SIT)
-• executed to verify that given functionality that span across different components meets requirement; 
-• change cannot be deployed to PreProd when tests fail with Critical or Major Defect;
-• it's an acceptance criteria for User Stories.
-• Integrated Regression Testing
-• executed in QA to verify new code has no side effects on existing functionalities;
-• change cannot be deployed to PreProd when tests fail with Critical or Major Defect.
-At the end of the Sprint, code is deployed to PreProd environment and End-To-End Testing can be executed:
-• it can be done when full Feature Increment is ready on the full Feature;
-• Business Design Team perform the E2E testing, based on scenario created by Business Design and signed-off by Capability Owner;
-• it's an acceptance criteria for Feature Increment.
-3.1.5.2.1. Optional Testing
-Market Specific Testing is executed in PreProd, by Market Deployment Team and Market Representatives, only in specific cases: 
-• Market E2E Tests 
-• GoLive of a Market - Tests are executed at least once for each Epic on Market configured functionality and reusing E2E scenario as much as possible: only if tests succeed without Critical or Major defect, the change can be deployed in Prod 
-• User Validation Tests
-• GoLive of a Market 
-3.1.6. Testing Documentation
-Each Feature Increment in Jira should have reference to Test Plan and Test Case Templates, covering given functionality, and this should be kept up to date in case of any change. Functional E2E Testing of a Feature can be only done when all related User Stories are completed.
-Functional E2E test of an Epic should be built of Features E2E Testing. 
-E2E Tests shall be performed by Business Design Team base on the defined scenarios. E2E Test scenarios have to be signed-off by BPO.
+Governance Meeting:
 
+Weekly basis
+IT Solution Managers review approved requests
+Assign tasks to leading IT Solution Manager
+Integrated Planning Meeting:
 
-5.1. Deploy to PreProd environment
-Release in PrePod are executed at the end of every Sprint, to make code available for the Market to test and as a container for package to be moved to Prod.
-Requirement for PreProd deploy:
-• Stories have to be tagged with appropriate Fix version
-• Integrated Testing completion with no Critical or Major Defects
-• TPOs approve and close all Stories 
-• TPOs approve Release to PreProd after Demo with BPOs
-5.2. Deploy to Prod environment
-There can be 3 types of deployment to Production:
-• Major Release: on a Platform level, impacting more than one Product and mainly introducing new functionalities. 
-• Minor Release: on a Platform or Product level, mainly introducing local, small enhancements. Minor release scope should always be classified as BAU (total IT cost <20k$).
-• Hotfix: Priority one (P1) issues and critical security incidents, usually on Product level, but may also impact whole Platform. In case of 'Hotfix' the deployment should be done through Hotfix environment. 
-5.2.1. Major Release
-Major Release in Production are scheduled on a quarterly basis. Calendar should be published in advance to inform all stakeholders with planned deployment and their scope.
-At least 2 weeks before the deploy, Release Notes have to be published: the Business Release Note by BPOs and the Technical Release Note by TPOs. 
-Cut-Over plan shall be finalized at least 3 days before the release, as per defined template on Confluence (07.02 DCE2.0 Major Releases) by Product Teams, with following details:
-• List of tickets that are part of the release: stories have to be closed and all tickets have to be tagged with appropriate Fix version;
-• All actions required to deploy code to Production, post-deployment check and tests that need do be done, and the Back-out plan;
-• A high level analysis of Risks & Impacts.
-In case of a Feature where more than one Product is involved, but not all of them are ready with the Feature and E2E testing cannot be executed, the Product Team who is ready can deploy the change to Prod, but has to ensure that it's not active until all features are completed and E2E can be executed.
-The last Sprint before Major Release, should be planned by Product Team accordingly, with a particular focus on Release preparation. 
-5.2.2. Minor Release
-Minor Release in Production can be executed on an ad-hoc basis, the week after Sprint closure and it has to be communicated at least 1 week in advance.
-Cut-Over plan shall be finalized at least 3 days before the release, as per defined template on Confluence (07.02 DCE2.0 Major Releases) by Product Teams, with following details:
-• List of tickets that are part of the release: stories have to be closed and all tickets have to be tagged with appropriate Fix version;
-• All actions required to deploy code to Production, post-deployment check and tests that need do be done, and the Back-out plan;
-• A high level analysis of Risks & Impacts.
-At least 1 day before the deploy, Release Notes have to be published: the Business Release Note by BPOs and the Technical Release Note by TPOs. 
-5.2.3. Hotfix
-Hotfix can be deployed whenever required, following the System Change Management Process (Change & Release Process). Cut-Over plan shall be prepared as per defined template on Confluence (07.02 DCE2.0 Major Releases) by Product Teams, with following details:
-• List of tickets that are part of the release: stories have to be closed and all tickets have to be tagged with appropriate Fix version;
-• All actions required to deploy code to Production, post-deployment check and tests that need do be done, and the Back-out plan;
-• A high level analysis of Risks & Impacts.
-Relevant communication should be sent to relevant Stakeholders.
+Prepare list of priorities for upcoming sprint
+Identify dependencies and relevant tickets
+Integrated Prioritization Meeting:
+
+Finalize priority list for all capabilities
+Outcome: Confluence page with priorities based on features
+Product Team Planning:
+
+Self-organized product teams
+Create Sprint Backlog based on defined priorities
+Mandatory attendees: TPO, Scrum Master, Development Team
+Development and Testing:
+
+Prioritized stories in backlog
+Testing activities at product and integrated levels
+Types of testing: Static Code Analysis, Unit Tests, Component Tests, System Integration Testing, Integrated Regression Testing
+Optional Testing:
+
+Market Specific Testing in PreProd environment
+Market E2E Tests and User Validation Tests
+Testing Documentation:
+
+Feature Increment in Jira linked to Test Plan and Test Case Templates
+Functional E2E Testing of a Feature and Epic
+Deployment:
+
+PreProd Environment:
+
+Deployed at the end of every sprint
+Requirements: Tagged stories, no critical or major defects, TPO approval
+Prod Environment:
+
+Types: Major Release, Minor Release, Hotfix
+Requirements vary depending on release type
+A. Major Release:
+
+Quarterly basis
+Publish Release Notes and Cut-Over plan
+Last sprint focused on release preparation
+B. Minor Release:
+
+Ad-hoc basis, after sprint closure
+Communicate at least 1 week in advance
+Publish Release Notes and Cut-Over plan
+C. Hotfix:
+
+Deployed as required
+Follow System Change Management Process
+Prepare Cut-Over plan and communicate with stakeholders
