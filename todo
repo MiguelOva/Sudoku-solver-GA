@@ -1,58 +1,57 @@
-IT Project Management Process:
 
-Governance Meeting:
 
-Weekly basis
-IT Solution Managers review approved requests
-Assign tasks to leading IT Solution Manager
-Integrated Planning Meeting:
 
-Prepare list of priorities for upcoming sprint
-Identify dependencies and relevant tickets
-Integrated Prioritization Meeting:
 
-Finalize priority list for all capabilities
-Outcome: Confluence page with priorities based on features
-Product Team Planning:
+Good day managers,
+As a trainee, I have identified some pain points that may be worth addressing in our day-to-day work. One of these is the need for more dedicated sessions focused specifically on the DCE2 project. For instance, having sessions similar to the 8-hour session we had in the Lisbon office, where we had an opportunity to learn everything relating to PMI products, combustible tobacco and RRP products, with a slot for Q&A for open discussion.
+Time is precious and business activities come first, but having more such sessions would have enabled us to understand DCE2 more quickly and bring value to the team more efficiently. We also suggest shadowing or a similar program, although we acknowledge that this may be difficult to implement due to the scope of the international teams.
+Another pain point is the challenge of identifying who to contact for specific issues or topics, and even after identifying a contact, it can take a long time to get a response. Sometimes, it feels like a game of ping pong, where we are referred to another colleague or another possible "solution path" which can be frustrating and time-consuming. However, we acknowledge that this comes as a consequence of working on such a large-scale team.
+Although Confluence serves as the DCE2 Bible, it can be overwhelming and challenging to navigate. Therefore, we recommend constructing a small DCE2 manual for dummies, providing an overview of different teams, responsibilities, key open topics, priorities, and standard operating practices. In order to start developing a small Helper for each of our specific job roles, we have created a dedicated page to store important links, useful information, and other data. This page aims to provide useful information not only for us, but for future colleagues who would join DCE2.0 for a "faster onboarding". Our goal is to continue to develop this page during the upcoming months.
+By addressing these pain points, we can improve our efficiency and effectiveness in delivering value to the team. Thank you for considering our suggestions.
 
-Self-organized product teams
-Create Sprint Backlog based on defined priorities
-Mandatory attendees: TPO, Scrum Master, Development Team
-Development and Testing:
+From <https://ora.ai/tense-ivory-a4ap/chatbot> 
 
-Prioritized stories in backlog
-Testing activities at product and integrated levels
-Types of testing: Static Code Analysis, Unit Tests, Component Tests, System Integration Testing, Integrated Regression Testing
-Optional Testing:
 
-Market Specific Testing in PreProd environment
-Market E2E Tests and User Validation Tests
-Testing Documentation:
 
-Feature Increment in Jira linked to Test Plan and Test Case Templates
-Functional E2E Testing of a Feature and Epic
-Deployment:
 
-PreProd Environment:
+Good morning, managers. Today, I would like to present some of the pain points that I have encountered during my 6-month milestone working on the DCE2 project. I have compiled these pain points based on my own experience and feedback from my colleagues.
+Firstly, I would like to address the need for dedicated sessions for the DCE2 project. As we all know, the DCE2 project is a complex one, and it requires a lot of attention and focus. However, due to our busy schedules, we often end up multitasking and not giving the project the attention it deserves. Therefore, I recommend that we set aside dedicated sessions for the DCE2 project, where we can focus solely on the project and make significant progress.
+Secondly, I would like to point out the difficulties in identifying contacts for the DCE2 project. As the project involves multiple teams and stakeholders, it can be challenging to identify the right person to contact when we need assistance. I suggest that we create a contact list with the names, roles, and contact information of all the stakeholders involved in the project. This will help us save time and avoid any delays in the project.
+Lastly, I would like to mention the challenges in navigating Confluence, which is the platform we use to store and share project-related information. As a new member of the team, I found it challenging to navigate the platform and find the information I needed. Therefore, I recommend that we create a small DCE2 manual that includes a guide to navigating Confluence and a list of important links and resources. Additionally, we could create a dedicated page on Confluence to store all the relevant information related to the DCE2 project.
+In conclusion, I believe that by addressing these pain points, we can improve our productivity and make significant progress on the DCE2 project. Thank you for your attention.
 
-Deployed at the end of every sprint
-Requirements: Tagged stories, no critical or major defects, TPO approval
-Prod Environment:
+From <https://ora.ai/tense-ivory-a4ap/chatbot> 
 
-Types: Major Release, Minor Release, Hotfix
-Requirements vary depending on release type
-A. Major Release:
 
-Quarterly basis
-Publish Release Notes and Cut-Over plan
-Last sprint focused on release preparation
-B. Minor Release:
+Hello managers,
+As a trainee, I have been working as an Associate Data Architect for the past six months. In this role, I have provided support in various User Stories, including product ingestion improvements for the PIM environment, incorrect timestamps being exported into TD through MS integration, UK order missing Codentifiers, and multiple Codentifiers attached to a single unit of product.
+Through these experiences, I have gained a better understanding of DCE2 Architecture and how data is processed and shared between different systems. I have learned how to analyze and detail data impact for specific epics depending on the affected systems. I am now more familiar with the Data Models applied to each system and key-system access to Hybris, Kibana, SAP ElasticSearch, and Solidatus (for Metadata Traceability and flow).
+These experiences have also allowed me to familiarize myself with different environments, platforms, and teams. I have learned how to work around systems access, understand how Confluence works, search and filter documentation, team organization, and correct POC's.
+Overall, I feel that my experiences have given me a better understanding of the type of data currently stored in Hybris and how it relates to requests from DE Market for data artifacts not currently shared.
+Thank you for your time, and I look forward to continuing to learn and grow in this role.
 
-Ad-hoc basis, after sprint closure
-Communicate at least 1 week in advance
-Publish Release Notes and Cut-Over plan
-C. Hotfix:
+From <https://ora.ai/tense-ivory-a4ap/chatbot> 
 
-Deployed as required
-Follow System Change Management Process
-Prepare Cut-Over plan and communicate with stakeholders
+
+
+
+
+Hello managers,
+As a trainee, I would like to present some of the pain points that I have encountered during my day-to-day work. One specific example of a pain point that I faced was when I tried to analyze the issue regarding the incorrect order time stamps in Treasure Data.
+Since I didn't have access to Treasure Data, it made it difficult to analyze the scope of the issue and the number of affected cases. It was recommended to check the exports logs to see if any issue might have been recorded. However, there were several options to view Hybris DCE2.0 Prod Logs, including Kibana, OpenSearch SAP, and PagerDuty.
+It took me a couple of days to gain access to Kibana, and PagerDuty access was denied. After finding the logs, I could only find logs relating to a very small time period of Dec 2022 as these were not being stored properly, and there was no detailed SOP available on how to navigate the system. Although there was a lot of information on Confluence, it wasn't helpful in this particular case.
+Thankfully, with the help of a team member, who responded very quickly and with detailed info, I was able to resolve the issue. However, the process was somewhat difficult to navigate as the entire issue flow was segmented across different systems. Each system has its own access requirements and WoW, and sometimes "duplicate" information can be stored in different systems.
+I understand that this is the direct result of increased security for the data within the company. Nevertheless, restricting access to only what is strictly necessary increases complexity and time between communication for issue resolution.
+Thank you for your time, and I hope that this information will help us work towards a more streamlined process in the future.
+
+From <https://ora.ai/tense-ivory-a4ap/chatbot> 
+
+
+
+
+
+
+
+
+
+
