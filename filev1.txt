@@ -1,0 +1,25 @@
+FR 2021 - Change the process since 2021 incorrect timestamps only
+
+Check for Canada
+
+	- Check for HAV system  by State
+	- Comprise a report of different state tax legislation
+	- How To Charge Sales Tax for Out-of-State Customers (thebalancemoney.com)
+  - https://www.thebalancemoney.com/which-sales-tax-rate-do-i-charge-my-customers-3193251
+	- https://pmicloud-my.sharepoint.com/personal/gscott_pmintl_net/_layouts/15/stream.aspx?id=%2Fpersonal%2Fgscott_pmintl_net%2FDocuments%2FRecordings%2F_TechTalk - IT Consumer %26 Commercial Platforms-20230505_133622-Meeting Recording%2Emp4&ga=1&OR=Teams-HL&CT=1684860866334&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMzA0MDIwMjcwNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
+
+
+	select 
+	{oe.pmiInternalCode} as 'PMIINTERNALCODE', {sn.code} AS 'SERIALMUMBER', {o.code} as code from 
+	{ Order as o  left join OrderEntry as oe on \{oe:order}={o:pk}
+	LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry} = {oe.pk}
+	} 
+	where 
+  
+	({oe.pmiInternalCode}='DK002899.00' and {sn.code}='H8BGP85PGRTA' or{oe.pmiInternalCode}
+	='DK002900.00' and {sn.code}='EFJ4N2MHB90G' or
+	{oe.pmiInternalCode}='DK002897.00' and {sn.code}='G1YNRZ10LY28' or{oe.pmiInternalCode}
+	='DK002900.00' and {sn.code}='KU48MYYSR8EW' or
+	{oe.pmiInternalCode}='DK002900.00' and {sn.code}='VF4S2CJ7DWTA' or{oe.pmiInternalCode}
+
+
