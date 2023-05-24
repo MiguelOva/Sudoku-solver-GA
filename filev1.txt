@@ -24,29 +24,20 @@ Check for Canada
 
 
 SELECT 
-    {sn.code} AS 'SERIALNUMBER'
-FROM 
-    { Order AS o  
-    LEFT JOIN OrderEntry AS oe ON {oe:order} = {o:pk}
-    LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry} = {oe.pk} 
-    }
-WHERE 
-    {o.code} = 'YOUR_ORDER_CODE'
-
-
-
-SELECT 
     {o.code} AS 'ORDER', 
     {o.status} AS 'STATUS',
+    {a.name} AS 'NAME',
     {oe.quantity} AS 'QUANTITY',
-    {ot.OrderType} AS 'ORDERTYPE',
+    {oe.product} AS 'PRODUCT',
+    {oe.unit} AS 'UNIT',
     {sn.code} AS 'SERIALNUMBER'
 FROM 
     { Order AS o  
+    LEFT JOIN AbstractOrder AS a ON {a.pk}={o.pk}
     LEFT JOIN OrderEntry AS oe ON {oe:order}={o:pk}
     LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry}={oe.pk} 
-    LEFT JOIN OrderType AS ot ON {ot.pk}={o.OrderType}
     }
 WHERE 
     {o.code} IN ('ORDER_CODE_1', 'ORDER_CODE_2', ..., 'ORDER_CODE_N')
+
 
