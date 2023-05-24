@@ -23,10 +23,13 @@ Check for Canada
 	{oe.pmiInternalCode}='DK002900.00' and {sn.code}='VF4S2CJ7DWTA' or{oe.pmiInternalCode}
 
 
-select 
-	{oe.pk} AS 'ORDERENTRY', {sn.code} AS 'SERIALNUMBER', {o.code} as code from 
-	{ Order as o  left join OrderEntry as oe on {oe:order}={o:pk}
-	LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry} = {oe.pk}
-	} 
-	where 
-	{oe.pk} IN (ORDER_ENTRY_1, ORDER_ENTRY_2, ..., ORDER_ENTRY_N)
+SELECT 
+    {sn.code} AS 'SERIALNUMBER'
+FROM 
+    { Order AS o  
+    LEFT JOIN OrderEntry AS oe ON {oe:order} = {o:pk}
+    LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry} = {oe.pk} 
+    }
+WHERE 
+    {o.code} = 'YOUR_ORDER_CODE'
+
