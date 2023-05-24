@@ -9,132 +9,24 @@ Check for Canada
 	- https://pmicloud-my.sharepoint.com/personal/gscott_pmintl_net/_layouts/15/stream.aspx?id=%2Fpersonal%2Fgscott_pmintl_net%2FDocuments%2FRecordings%2F_TechTalk - IT Consumer %26 Commercial Platforms-20230505_133622-Meeting Recording%2Emp4&ga=1&OR=Teams-HL&CT=1684860866334&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMzA0MDIwMjcwNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
 
 
-Order status for Markets
-SELECT DISTINCT {country.isocode} as 'Country', {pmist:code} AS 'Status', {ex:code} as 'Exported',
-count({o:code}) AS 'Count'
-FROM {Order AS o
-LEFT JOIN BaseStore AS store ON {o:store}={store:pk}
-JOIN Country AS country ON {store:country} = {country:pk}
-LEFT JOIN ExportStatus AS ex ON {ex:pk}={o:exportStatus}
-LEFT JOIN PmiOrderStatus AS pmist ON {pmist:pk}={o:pmiOrderStatus}
-}
-WHERE {o:originalVersion} IS NULL
-AND {o:code} NOT LIKE 'BLIND%'
-AND {o:creationTime} BETWEEN CAST('2022-04-07 00:00:00' AS DATETIME) AND CAST('2022-04-10 23:59:59' AS DATETIME)
-group by {country.isocode},{pmist:code},{ex:code}
-ORDER BY {pmist:code} DESC
+SELECT 
+    {o.code} AS 'ORDER', 
+    {sn.code} AS 'SERIALNUMBER',
+    {ot.typeCode} AS 'ORDERTYPE',
+    {oc.code} AS 'ORDERCHANNEL',
+    {o.date} AS 'DATE',
+    {pmist.code} AS 'PMIORDERSTATUS',
+    {cn.isocode} AS 'COUNTRY'
+FROM 
+    { Order AS o 
+    LEFT JOIN OrderEntry AS oe ON {oe:order}={o:pk}
+    LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry}={oe.pk}
+    LEFT JOIN OrderType AS ot ON {o:orderType}={ot.pk}
+    LEFT JOIN OrderChannel AS oc ON {o:orderChannel}={oc:pk}
+    LEFT JOIN PmiOrderStatus AS pmist ON {o:pmiOrderStatus}={pmist.pk}
+    JOIN BaseStore AS bs ON {o:store}={bs.pk}
+    JOIN Country AS cn ON {bs:country}={cn:pk}
+    }
+WHERE 
+    {o.code} IN ('ORDER_CODE_1', 'ORDER_CODE_2', ..., 'ORDER_CODE_N')
 
-
-Order Count - channel specific
-SELECT DISTINCT {country.isocode} as 'Country', {pmist:code} AS 'Status', {ex:code} as 'Exported',
-count({o:code}) AS 'Count'
-FROM {Order AS o
-LEFT JOIN BaseStore AS store ON {o:store}={store:pk}
-JOIN Country AS country ON {store:country} = {country:pk}
-LEFT JOIN ExportStatus AS ex ON {ex:pk}={o:exportStatus}
-LEFT JOIN PmiOrderStatus AS pmist ON {pmist:pk}={o:pmiOrderStatus}
-LEFT JOIN OrderChannel AS oc ON {o:orderChannel} = {oc:pk}
-}
-WHERE {o:originalVersion} IS NULL
-AND {o:code} NOT LIKE 'BLIND%'
-AND {oc:code} IN ('WEBSITE','CSC')
-AND {o:creationTime} BETWEEN CAST('2022-04-12 00:00:00' AS DATETIME) AND CAST('2022-04-12 23:59:59' AS DATETIME)
-group by {country.isocode},{pmist:code},{ex:code},{oc:code}
-ORDER BY {pmist:code} DESC
-
-
-Duplicate Orders  
-select {pk}, {placedcartid},{code} from {order} where {placedcartid} in ({{
-select {placedcartid} from {order} group by {placedcartid} having count({placedcartid}) > 1
-}}) order by {placedcartid}
-
-
-
-Order with Serial Number
-SELECT DISTINCT {o:code} AS 'ORDER CODE',
-       {o:placedCartId} AS 'CART CODE',
-       {o:date} AS 'DATE',
-       {ot:typeCode} AS 'ORDER TYPE',      
-       {pmist:code} AS 'PMI ORDER STATUS',
-       {oe.pmiInternalCode} as 'PMI Internal Code',
-       {sn.code} as 'Serial Number',
-       {store:uid} AS 'BASE STORE',
-       {sale:code} AS 'TOUCH POINT',      
-       {cn:isocode} AS 'country'
-FROM {Order as o
-JOIN orderEntry as oe on {oe.order}={o.pk}
-LEFT JOIN SerialNumber as sn on {sn.AbstractOrderEntry} = {oe.pk}
-LEFT JOIN PmiOrderStatus AS pmist ON {pmist:pk}={o:pmiOrderStatus}
-LEFT JOIN OrderType AS ot ON {o:orderType}={ot:pk}
-LEFT JOIN SalesApplication AS sale ON {sale:pk}={o:salesApplication}
-JOIN BaseStore as store on {o:store}={store:pk}
-LEFT JOIN Country AS cn ON {store:country}={cn:pk}
-}
-WHERE {o:originalVersion} IS NULL
-AND {o:code} NOT LIKE 'BLIND%'
-AND {o:creationTime} BETWEEN CAST('2021-10-06 00:00:00' AS DATETIME) AND CAST('2021-10-10 23:59:59' AS DATETIME)
-AND {cn.isocode} = 'DE' ORDER BY {o:date} DESC
-
-
-
-
-select
-distinct
-{cn:isocode} as 'COUNTRY',
-{ot.typeid} as 'ORDER_TYPE',
-{oc.code} as 'ORDER_CHANNEL',
- {OR:reasonID} as 'ORDER_REASON',
- {ost.code} as 'ORDER_STATUS',
-{ex:code} as 'ORDER_EXPORT_STATUS'
-FROM {Order AS o
-        JOIN BaseStore AS store ON {o:store}={store:pk}
-        JOIN Customer AS cust ON {cust:pk}={o:user}
-        LEFT JOIN PmiOrderStatus AS ost ON {o:pmiOrderStatus}={ost:pk}
-        LEFT JOIN PaymentStatus AS ps ON {o:paymentStatus}={ps:pk}
-        LEFT JOIN OrderChannel AS oc ON {o:orderChannel} = {oc:pk}
-        LEFT JOIN Country AS cn ON {store:country}={cn:pk}
-        LEFT JOIN PaymentTransaction AS ptn ON {ptn:order}={o:pk}
-        LEFT JOIN ExportStatus AS ex ON {ex:pk}={o:exportStatus}
-        LEFT JOIN OrderProcess AS op ON {op:order}={o:pk}
-        LEFT JOIN ProcessTask AS pt ON {pt:process}={op:pk}
-               LEFT JOIN OrderType AS ot ON {o:orderType}={ot:pk}  
-               LEFT JOIN ExportStatus AS ex ON {ex:pk}={o:exportStatus}
-               LEFT JOIN OrderReason AS OR ON {o:orderReason}={OR:pk}}
-WHERE
-{o:originalVersion} is null AND {op:code} LIKE 'order-process%'
-AND {o:code} NOT LIKE 'BLIND%'
-AND {o.creationTime} BETWEEN CAST('2023-05-20 00:00:00' AS DATETIME) AND CAST('2023-05-22 23:59:59' AS DATETIME)
-group by {ot.typeid},{ost.code} ,{oc.code},{cn:isocode},{ex:code}, {OR:reasonID}
-
-
-SELECT distinct
-{cn:isocode} as 'COUNTRY',
-{pm.code} as 'Payment Mode'
-FROM {Order AS o
-        JOIN BaseStore AS store ON {o:store}={store:pk}
-   LEFT JOIN Country AS cn ON {store:country}={cn:pk}
-       LEFT JOIN PaymentMode as pm on {o.paymentMode}={pm.pk}
-                }
-WHERE ( {pm.code} like '%Bank%' or {pm.code} like '%Credit%'  or {pm.code} like '%Debit%' or {pm.code} like '%Paypal%' ) and
-{o:originalVersion} is null
-AND {o:code} NOT LIKE 'BLIND%'
-AND {o.creationTime} BETWEEN CAST('2023-05-24 00:00:00' AS DATETIME) AND CAST('2023-05-24 23:59:59' AS DATETIME)
-group by {cn:isocode}, {pm.code}
-
-
-SELECT  count( DISTINCT
-       {o:code} )AS 'Order_Count',
-       {rbp:name} AS 'PROMOTION_NAME',
-       {country.isocode} As 'Country'
-FROM {Order AS o
-LEFT JOIN PmiOrderStatus AS pmist ON {pmist:pk}={o:pmiOrderStatus}
-JOIN PromotionResult AS pr ON {pr:order} = {o:pk}
-JOIN RuleBasedPromotion AS rbp ON {pr:promotion} = {rbp:pk}
-LEFT JOIN CmsSite AS site ON {o:site}={site:pk}
-LEFT JOIN BaseStore AS store ON {o:store}={store:pk}
-JOIN Country AS country ON {store:country} = {country:pk}
-}
-WHERE {o:originalVersion} IS NULL AND {o:versionID} is null
-AND {pmist:code} NOT IN ('CANCELLED')
-AND {o:creationTime} BETWEEN CAST('2023-05-24 00:00:00' AS DATETIME) AND CAST('2023-05-24 23:59:59' AS DATETIME)
-group by  {rbp:name},{country.isocode}
