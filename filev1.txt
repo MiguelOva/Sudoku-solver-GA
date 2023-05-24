@@ -12,7 +12,8 @@ Check for Canada
 SELECT 
     {o.code} AS 'ORDER', 
     {sn.code} AS 'SERIALNUMBER',
-    {ot.typeCode} AS 'ORDERTYPE',
+    {ot.typeCode} AS 'TYPECODE',
+    {ot.pk} AS 'PK',
     {oc.code} AS 'ORDERCHANNEL',
     {o.date} AS 'DATE',
     {pmist.code} AS 'PMIORDERSTATUS',
@@ -20,13 +21,14 @@ SELECT
 FROM 
     { Order AS o 
     LEFT JOIN OrderEntry AS oe ON {oe:order}={o:pk}
-    LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry}={oe.pk}
-    LEFT JOIN OrderType AS ot ON {o:orderType}={ot.pk}
+    LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry}={oe:pk}
+    LEFT JOIN OrderType AS ot ON {o:orderType}={ot:pk}
     LEFT JOIN OrderChannel AS oc ON {o:orderChannel}={oc:pk}
-    LEFT JOIN PmiOrderStatus AS pmist ON {o:pmiOrderStatus}={pmist.pk}
-    JOIN BaseStore AS bs ON {o:store}={bs.pk}
+    LEFT JOIN PmiOrderStatus AS pmist ON {o:pmiOrderStatus}={pmist:pk}
+    JOIN BaseStore AS bs ON {o:store}={bs:pk}
     JOIN Country AS cn ON {bs:country}={cn:pk}
     }
 WHERE 
     {o.code} IN ('ORDER_CODE_1', 'ORDER_CODE_2', ..., 'ORDER_CODE_N')
+
 
