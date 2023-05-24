@@ -33,3 +33,20 @@ FROM
 WHERE 
     {o.code} = 'YOUR_ORDER_CODE'
 
+
+
+SELECT 
+    {o.code} AS 'ORDER', 
+    {o.status} AS 'STATUS',
+    {oe.quantity} AS 'QUANTITY',
+    {ot.OrderType} AS 'ORDERTYPE',
+    {sn.code} AS 'SERIALNUMBER'
+FROM 
+    { Order AS o  
+    LEFT JOIN OrderEntry AS oe ON {oe:order}={o:pk}
+    LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry}={oe.pk} 
+    LEFT JOIN OrderType AS ot ON {ot.pk}={o.OrderType}
+    }
+WHERE 
+    {o.code} IN ('ORDER_CODE_1', 'ORDER_CODE_2', ..., 'ORDER_CODE_N')
+
