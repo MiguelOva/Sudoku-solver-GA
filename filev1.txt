@@ -9,26 +9,26 @@ Check for Canada
 	- https://pmicloud-my.sharepoint.com/personal/gscott_pmintl_net/_layouts/15/stream.aspx?id=%2Fpersonal%2Fgscott_pmintl_net%2FDocuments%2FRecordings%2F_TechTalk - IT Consumer %26 Commercial Platforms-20230505_133622-Meeting Recording%2Emp4&ga=1&OR=Teams-HL&CT=1684860866334&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMzA0MDIwMjcwNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
 
 
-SELECT 
-    {o.code} AS 'ORDER', 
-    {sn.code} AS 'SERIALNUMBER',
-    {ot.typeCode} AS 'TYPECODE',
-    {ot.pk} AS 'PK',
-    {oc.code} AS 'ORDERCHANNEL',
-    {o.date} AS 'DATE',
-    {pmist.code} AS 'PMIORDERSTATUS',
-    {cn.isocode} AS 'COUNTRY'
-FROM 
-    { Order AS o 
-    LEFT JOIN OrderEntry AS oe ON {oe:order}={o:pk}
-    LEFT JOIN SerialNumber AS sn ON {sn.abstractOrderEntry}={oe:pk}
-    LEFT JOIN OrderType AS ot ON {o:orderType}={ot:pk}
-    LEFT JOIN OrderChannel AS oc ON {o:orderChannel}={oc:pk}
-    LEFT JOIN PmiOrderStatus AS pmist ON {o:pmiOrderStatus}={pmist:pk}
-    JOIN BaseStore AS bs ON {o:store}={bs:pk}
-    JOIN Country AS cn ON {bs:country}={cn:pk}
-    }
-WHERE 
-    {o.code} IN ('ORDER_CODE_1', 'ORDER_CODE_2', ..., 'ORDER_CODE_N')
+Part I: Induction Process and Company Knowledge Extracted
 
+1. Induction Overview
+ During the induction phase, we had weekly round-ups that covered various aspects of PMI and its products, including product variants, 
+ production processes, research and development, sustainability, harm reduction, and the company's global vision for the future.
+
+2. Learning & Development
+ The Learning & Development program provided tailored sessions to help us develop the necessary skills for our career paths.
+  IT Capability Development with Sérgio: An overview of IT Academy, the one-stop-shop for reaching our goals and succeeding within PMI.
+  The Importance of Business Acumen by Katica: Understanding our role within PMI, leveraging business resources, and diving deeper into the  company's organizational structure.
+  O'Reilly Platform by Jane: Exploring the functionalities and advantages of the O'Reilly learning platform.
+  Introduction to CloudGuild with Sylvia: Guidance on achieving success in the AWS Cloud Practitioner Certificate.
+  Career Development and Development Journeys: Focusing on targeting our goals and pursuing them within PMI.
+
+4. Weekly Round-Ups with ExploreIT and Raylene
+  Throughout the induction, we were provided with a wealth of information on various topics, such as global inductions, Learning & Development,  Commercial Strategy, Marketing, Sustainability, Personal Branding, and Psychological Safety.
+  These topics not only made our jobs easier but also facilitated our integration into the complex organization of PMI.
+
+In conclusion, the induction process and company knowledge we gained have been instrumental in our understanding of PMI, 
+its products, and our roles within the organization. The comprehensive Learning & Development program has provided us with the 
+necessary skills and resources to succeed in our respective roles, and the weekly round-ups have ensured a smooth integration into the 
+company's culture and processes.
 
